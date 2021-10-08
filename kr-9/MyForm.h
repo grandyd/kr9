@@ -66,6 +66,15 @@ namespace kr9 {
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::TextBox^ textBox4;
+	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::TabControl^ tabControl1;
+	private: System::Windows::Forms::TabPage^ tabPage1;
+	private: System::Windows::Forms::TabPage^ tabPage2;
+	private: System::Windows::Forms::TabPage^ tabPage3;
+	private: System::Windows::Forms::TabPage^ tabPage4;
+	private: System::Windows::Forms::Label^ label8;
+
+	private: System::Windows::Forms::ComboBox^ comboBox1;
 
 
 
@@ -86,9 +95,9 @@ namespace kr9 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea5 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend5 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series5 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->textBoxU0 = (gcnew System::Windows::Forms::TextBox());
@@ -114,34 +123,44 @@ namespace kr9 {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
+			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
+			this->tabPage3 = (gcnew System::Windows::Forms::TabPage());
+			this->tabPage4 = (gcnew System::Windows::Forms::TabPage());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
+			this->groupBox1->SuspendLayout();
+			this->tabControl1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// chart1
 			// 
-			chartArea3->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea3);
-			legend3->Name = L"Legend1";
-			this->chart1->Legends->Add(legend3);
-			this->chart1->Location = System::Drawing::Point(550, 317);
+			chartArea5->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea5);
+			legend5->Name = L"Legend1";
+			this->chart1->Legends->Add(legend5);
+			this->chart1->Location = System::Drawing::Point(594, 317);
 			this->chart1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->chart1->Name = L"chart1";
-			series3->ChartArea = L"ChartArea1";
-			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series3->Legend = L"Legend1";
-			series3->Name = L"chisl_solution";
-			this->chart1->Series->Add(series3);
-			this->chart1->Size = System::Drawing::Size(393, 290);
+			series5->ChartArea = L"ChartArea1";
+			series5->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series5->Legend = L"Legend1";
+			series5->Name = L"chisl_solution";
+			this->chart1->Series->Add(series5);
+			this->chart1->Size = System::Drawing::Size(428, 290);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
 			this->chart1->Click += gcnew System::EventHandler(this, &MyForm::chart1_Click);
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(37, 54);
+			this->button1->Location = System::Drawing::Point(37, 68);
 			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(181, 69);
+			this->button1->Size = System::Drawing::Size(114, 20);
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Вычислить";
 			this->button1->UseVisualStyleBackColor = true;
@@ -149,17 +168,17 @@ namespace kr9 {
 			// 
 			// textBoxU0
 			// 
-			this->textBoxU0->Location = System::Drawing::Point(561, 23);
+			this->textBoxU0->Location = System::Drawing::Point(313, 193);
 			this->textBoxU0->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBoxU0->Name = L"textBoxU0";
-			this->textBoxU0->Size = System::Drawing::Size(93, 20);
+			this->textBoxU0->Size = System::Drawing::Size(133, 20);
 			this->textBoxU0->TabIndex = 2;
 			this->textBoxU0->Text = L"1";
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(514, 27);
+			this->label1->Location = System::Drawing::Point(310, 178);
 			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(27, 13);
@@ -170,7 +189,7 @@ namespace kr9 {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(514, 47);
+			this->label2->Location = System::Drawing::Point(310, 218);
 			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(39, 13);
@@ -179,17 +198,17 @@ namespace kr9 {
 			// 
 			// textBoxAlpha
 			// 
-			this->textBoxAlpha->Location = System::Drawing::Point(561, 44);
+			this->textBoxAlpha->Location = System::Drawing::Point(313, 233);
 			this->textBoxAlpha->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBoxAlpha->Name = L"textBoxAlpha";
-			this->textBoxAlpha->Size = System::Drawing::Size(93, 20);
+			this->textBoxAlpha->Size = System::Drawing::Size(133, 20);
 			this->textBoxAlpha->TabIndex = 4;
 			this->textBoxAlpha->Text = L"1";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(514, 68);
+			this->label3->Location = System::Drawing::Point(310, 257);
 			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(40, 13);
@@ -198,10 +217,10 @@ namespace kr9 {
 			// 
 			// textBoxSigma
 			// 
-			this->textBoxSigma->Location = System::Drawing::Point(561, 64);
+			this->textBoxSigma->Location = System::Drawing::Point(313, 272);
 			this->textBoxSigma->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBoxSigma->Name = L"textBoxSigma";
-			this->textBoxSigma->Size = System::Drawing::Size(93, 20);
+			this->textBoxSigma->Size = System::Drawing::Size(133, 20);
 			this->textBoxSigma->TabIndex = 6;
 			this->textBoxSigma->Text = L"4";
 			// 
@@ -220,27 +239,27 @@ namespace kr9 {
 			this->textBox1->Location = System::Drawing::Point(313, 110);
 			this->textBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(93, 20);
+			this->textBox1->Size = System::Drawing::Size(133, 20);
 			this->textBox1->TabIndex = 8;
 			this->textBox1->Text = L"1000";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(514, 110);
+			this->label5->Location = System::Drawing::Point(310, 137);
 			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(32, 13);
+			this->label5->Size = System::Drawing::Size(86, 13);
 			this->label5->TabIndex = 11;
-			this->label5->Text = L"шаг=";
+			this->label5->Text = L"Начальный шаг";
 			this->label5->Click += gcnew System::EventHandler(this, &MyForm::label5_Click);
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(561, 106);
+			this->textBox2->Location = System::Drawing::Point(313, 152);
 			this->textBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(93, 20);
+			this->textBox2->Size = System::Drawing::Size(133, 20);
 			this->textBox2->TabIndex = 10;
 			this->textBox2->Text = L"0,001";
 			// 
@@ -331,11 +350,94 @@ namespace kr9 {
 			this->textBox4->Size = System::Drawing::Size(133, 20);
 			this->textBox4->TabIndex = 16;
 			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->tabControl1);
+			this->groupBox1->Location = System::Drawing::Point(550, 26);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(472, 266);
+			this->groupBox1->TabIndex = 18;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Справка";
+			// 
+			// tabControl1
+			// 
+			this->tabControl1->Controls->Add(this->tabPage1);
+			this->tabControl1->Controls->Add(this->tabPage2);
+			this->tabControl1->Controls->Add(this->tabPage3);
+			this->tabControl1->Controls->Add(this->tabPage4);
+			this->tabControl1->Location = System::Drawing::Point(6, 17);
+			this->tabControl1->Name = L"tabControl1";
+			this->tabControl1->SelectedIndex = 0;
+			this->tabControl1->Size = System::Drawing::Size(208, 22);
+			this->tabControl1->TabIndex = 0;
+			// 
+			// tabPage1
+			// 
+			this->tabPage1->Location = System::Drawing::Point(4, 22);
+			this->tabPage1->Name = L"tabPage1";
+			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage1->Size = System::Drawing::Size(200, 0);
+			this->tabPage1->TabIndex = 0;
+			this->tabPage1->Text = L"U0=1";
+			this->tabPage1->UseVisualStyleBackColor = true;
+			// 
+			// tabPage2
+			// 
+			this->tabPage2->Location = System::Drawing::Point(4, 22);
+			this->tabPage2->Name = L"tabPage2";
+			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage2->Size = System::Drawing::Size(200, 0);
+			this->tabPage2->TabIndex = 1;
+			this->tabPage2->Text = L"U0=2";
+			this->tabPage2->UseVisualStyleBackColor = true;
+			// 
+			// tabPage3
+			// 
+			this->tabPage3->Location = System::Drawing::Point(4, 22);
+			this->tabPage3->Name = L"tabPage3";
+			this->tabPage3->Size = System::Drawing::Size(200, 0);
+			this->tabPage3->TabIndex = 2;
+			this->tabPage3->Text = L"U0=3";
+			this->tabPage3->UseVisualStyleBackColor = true;
+			// 
+			// tabPage4
+			// 
+			this->tabPage4->Location = System::Drawing::Point(4, 22);
+			this->tabPage4->Name = L"tabPage4";
+			this->tabPage4->Size = System::Drawing::Size(200, 0);
+			this->tabPage4->TabIndex = 3;
+			this->tabPage4->Text = L"U0=4";
+			this->tabPage4->UseVisualStyleBackColor = true;
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Location = System::Drawing::Point(34, 10);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(43, 13);
+			this->label8->TabIndex = 19;
+			this->label8->Text = L"Задача";
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Тестовая", L"Основная" });
+			this->comboBox1->Location = System::Drawing::Point(37, 42);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(114, 21);
+			this->comboBox1->TabIndex = 20;
+			this->comboBox1->Tag = L"";
+			this->comboBox1->Text = L"Тестовая";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1109, 666);
+			this->Controls->Add(this->comboBox1);
+			this->Controls->Add(this->label8);
+			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->textBox4);
 			this->Controls->Add(this->label6);
@@ -359,6 +461,8 @@ namespace kr9 {
 			this->Text = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
+			this->groupBox1->ResumeLayout(false);
+			this->tabControl1->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
