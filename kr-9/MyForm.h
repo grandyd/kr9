@@ -1,7 +1,11 @@
 #pragma once
 #include "solution.cpp"
+//#include <pair>
+#include <utility>
+#include <string>
 
-using namespace std;
+//using namespace std;
+//using namespace System;
 
 namespace kr9 {
 
@@ -835,8 +839,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	this->chart1->Series["Solution_U0_4"]->Points->Clear();
 
 	double x0 = 0;
-	double v0 = System::Convert::ToDouble(tabControl1->SelectedIndex+1);
-	double vkr = v0;
+	//double v0 = System::Convert::ToDouble(tabControl1->SelectedIndex+1);
+	
 	double alpha = System::Convert::ToDouble(textBoxAlpha->Text);
 	double sigma = System::Convert::ToDouble(textBoxSigma->Text);
 	double en;
@@ -847,8 +851,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 	//переменные для контроля длины шага
 	double modS = 0;
-	double prevX = x0;
-	double prevV = v0;
+	
 
 	int counterU = 0;
 	int counterL = 0;
@@ -861,98 +864,153 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 	listView1->Items->Clear();
 
-	array<String^ >^ ms = gcnew array< System::String^ >(7);
-	
-	chart1->Series["Solution_U0_1"]->Points->AddXY(x0, v0);//отрисовка начальной точки
-
-	//
-	ms[0] = "0";
-	ms[1] = x0.ToString();
-	ms[2] = h.ToString();
-	ms[3] = v0.ToString();
-	ms[4] = vkr.ToString();
-	ms[5] = (vkr - v0).ToString();
-	ms[6] = en.ToString();
-
-	ListViewItem^ listViewItem0 = gcnew ListViewItem(ms);
-	listView1->Items->Add(listViewItem0);
+	array<String^>^ ms = gcnew array< System::String^ >(7);
+	//отрисовка всех графиков
+	std::pair<int, std::string> kva[4];
 
 
-	int i = 0;
-	for (i; i < len && v0>0; i++)
+	int CheckArray[4] = { 0,0,0,0 };
+	kva[0].second = kva[1].second = kva[2].second = kva[3].second = "Solution_U0_";
+	for (int i = 0; i < 4; i++)
 	{
-		vkr = vkrNext(x0, v0, h, alpha, sigma);
-		x0 = xNext(x0, h);
-		v0 = vNext(x0, v0, h, alpha, sigma);
-		en = pow(2,3)*(vkr - v0) / (pow(2, 3) - 1);
+		kva[i].second.push_back('1'+i);
+	}
+	if (checkBox1->Checked)
+	{
+		kva[0].first = 1;
+	}
+	else
+	{
+		kva[0].first = 0;
+	}
+	if (checkBox2->Checked)
+	{
+		kva[1].first = 1;
+	}
+	else
+	{
+		kva[1].first = 0;
+	}
+	if (checkBox3->Checked)
+	{
+		kva[2].first = 1;
+	}
+	else
+	{
+		kva[2].first = 0;
+	}
+	if (checkBox4->Checked)
+	{
+		kva[3].first = 1;
+	}
+	else
+	{
+		kva[3].first = 0;
+	}
 
-		modS = mods(prevX, prevV, h, alpha, sigma);
-		//MessageBox::Show(modS.ToString());
-		//если |S|<Epsilon->увеличиваем шаг в 2 раза и принимаем нашу точку
-		if (modS<epsilon)
+	for (int j = 0; j < 4; j++)
+	{
+		if (kva[j].first == 0)
 		{
-			//MessageBox::Show(modS.ToString());
-			//MessageBox::Show(epsilon.ToString());
-			h *= 2;
-			if (maxH<h)
-			{
-				maxH = h;
-			}
-			counterU++;
+			continue;
 		}
-		//если |S|>Epsilon->уменьшаем шаг в 2 раза и расчитываем точку заного
-		if (modS>epsilon)
-		{
-			h /= 2;
-			if (minH>h)
-			{
-				minH = h;
-			}
-			counterL++;
-			//расчёт новой точки
-			vkr = vkrNext(prevX, prevV, h, alpha, sigma);
-			x0 = xNext(prevX, h);
-			v0 = vNext(prevX, prevV, h, alpha, sigma);
-			en = pow(2, 3) * (vkr - prevV) / (pow(2, 3) - 1);
-		}
+		x0 = 0;
+		double v0 = j + 1;
+		double vkr = v0;
 
-		if (maxMistake < modS)
-		{
-			maxMistake = modS;
-			mistakeIndex = i;
-		}
-
-
-		prevX = x0;
-		prevV = v0;
+		double prevX = x0;
+		double prevV = v0;
 
 
 
-		chart1->Series["Solution_U0_1"]->Points->AddXY(x0, v0);//отрисовка точки
+		//
+		chart1->Series[gcnew String(kva[j].second.c_str())]->Points->AddXY(x0, v0);//отрисовка начальной точки
 
-		//Заполнение таблицы==============================
-		
-		ms[0] = i.ToString();
+		//
+		ms[0] = "0";
 		ms[1] = x0.ToString();
 		ms[2] = h.ToString();
 		ms[3] = v0.ToString();
 		ms[4] = vkr.ToString();
-		ms[5] = (vkr-v0).ToString();
+		ms[5] = (vkr - v0).ToString();
 		ms[6] = en.ToString();
-		
+
 		ListViewItem^ listViewItem0 = gcnew ListViewItem(ms);
 		listView1->Items->Add(listViewItem0);
+
+
+		int i = 0;
+		for (i; i < len && v0>0; i++)
+		{
+			vkr = vkrNext(x0, v0, h, alpha, sigma);
+			x0 = xNext(x0, h);
+			v0 = vNext(x0, v0, h, alpha, sigma);
+			en = pow(2, 3) * (vkr - v0) / (pow(2, 3) - 1);
+
+			modS = mods(prevX, prevV, h, alpha, sigma);
+			//если |S|<Epsilon->увеличиваем шаг в 2 раза и принимаем нашу точку
+			if (modS < epsilon)
+			{
+				h *= 2;
+				if (maxH < h)
+				{
+					maxH = h;
+				}
+				counterU++;
+			}
+			//если |S|>Epsilon->уменьшаем шаг в 2 раза и расчитываем точку заного
+			if (modS > epsilon)
+			{
+				h /= 2;
+				if (minH > h)
+				{
+					minH = h;
+				}
+				counterL++;
+				//расчёт новой точки
+				vkr = vkrNext(prevX, prevV, h, alpha, sigma);
+				x0 = xNext(prevX, h);
+				v0 = vNext(prevX, prevV, h, alpha, sigma);
+				en = pow(2, 3) * (vkr - prevV) / (pow(2, 3) - 1);
+			}
+
+			if (maxMistake < modS)
+			{
+				maxMistake = modS;
+				mistakeIndex = i;
+			}
+
+
+			prevX = x0;
+			prevV = v0;
+
+
+
+			chart1->Series[gcnew String(kva[j].second.c_str())]->Points->AddXY(x0, v0);//отрисовка точки
+
+			//Заполнение таблицы==============================
+
+			ms[0] = i.ToString();
+			ms[1] = x0.ToString();
+			ms[2] = h.ToString();
+			ms[3] = v0.ToString();
+			ms[4] = vkr.ToString();
+			ms[5] = (vkr - v0).ToString();
+			ms[6] = en.ToString();
+
+			ListViewItem^ listViewItem0 = gcnew ListViewItem(ms);
+			listView1->Items->Add(listViewItem0);
+		}
+
+		//Заполнение справки=============
+		labelN->Text = i.ToString();
+		labelDouble->Text = counterU.ToString();
+		labelSmaller->Text = counterL.ToString();
+		labelMax->Text = maxH.ToString();
+		labelMin->Text = minH.ToString();
+		labelMistake->Text = maxMistake.ToString();
+		labelMistakeIndex->Text = mistakeIndex.ToString();
 	}
-
-	//Заполнение справки=============
-	labelN->Text = i.ToString();
-	labelDouble->Text = counterU.ToString();
-	labelSmaller->Text = counterL.ToString();
-	labelMax->Text = maxH.ToString();
-	labelMin->Text = minH.ToString();
-	labelMistake->Text = maxMistake.ToString();
-	labelMistakeIndex->Text = mistakeIndex.ToString();
-
 
 
 
