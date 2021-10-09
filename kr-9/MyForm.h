@@ -100,6 +100,9 @@ namespace kr9 {
 	private: System::Windows::Forms::Label^ labelDouble;
 	private: System::Windows::Forms::Label^ labelN;
 	private: System::Windows::Forms::Label^ label15;
+	private: System::Windows::Forms::Label^ labelMistakeIndex;
+	private: System::Windows::Forms::Label^ label16;
+	private: System::Windows::Forms::Label^ label1;
 
 
 
@@ -115,15 +118,32 @@ namespace kr9 {
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
+
+		double mods(double x, double v, double h, double alpha, double sigma)
+		{
+			double x12, v12;
+			x12 = xNext(x, h / 2);
+			v12 = vNext(x, v, h / 2, alpha, sigma);
+			double v1kr = vNext(x12, v12, h / 2, alpha, sigma);
+			double v1 = vNext(x, v, h, alpha, sigma);
+			//MessageBox::Show((v1kr - v1).ToString());
+			double s = (v1kr - v1)/(pow(2,3)-1);//pow(2,3)-возведение 2 в степень порядка метода
+			return abs(s);
+		}
+
+
+
+
+
 		/// <summary>
 		/// Требуемый метод для поддержки конструктора — не изменяйте 
 		/// содержимое этого метода с помощью редактора кода.
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -148,6 +168,19 @@ namespace kr9 {
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->textBoxEpsilon = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->labelMistake = (gcnew System::Windows::Forms::Label());
+			this->labelMin = (gcnew System::Windows::Forms::Label());
+			this->labelMax = (gcnew System::Windows::Forms::Label());
+			this->labelSmaller = (gcnew System::Windows::Forms::Label());
+			this->labelDouble = (gcnew System::Windows::Forms::Label());
+			this->labelN = (gcnew System::Windows::Forms::Label());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->label13 = (gcnew System::Windows::Forms::Label());
+			this->label12 = (gcnew System::Windows::Forms::Label());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
@@ -165,39 +198,30 @@ namespace kr9 {
 			this->checkBox3 = (gcnew System::Windows::Forms::CheckBox());
 			this->checkBox2 = (gcnew System::Windows::Forms::CheckBox());
 			this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
-			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->label10 = (gcnew System::Windows::Forms::Label());
-			this->label11 = (gcnew System::Windows::Forms::Label());
-			this->label12 = (gcnew System::Windows::Forms::Label());
-			this->label13 = (gcnew System::Windows::Forms::Label());
-			this->label14 = (gcnew System::Windows::Forms::Label());
-			this->label15 = (gcnew System::Windows::Forms::Label());
-			this->labelN = (gcnew System::Windows::Forms::Label());
-			this->labelDouble = (gcnew System::Windows::Forms::Label());
-			this->labelSmaller = (gcnew System::Windows::Forms::Label());
-			this->labelMax = (gcnew System::Windows::Forms::Label());
-			this->labelMin = (gcnew System::Windows::Forms::Label());
-			this->labelMistake = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label16 = (gcnew System::Windows::Forms::Label());
+			this->labelMistakeIndex = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			this->tabControl1->SuspendLayout();
 			this->tabControl2->SuspendLayout();
+			this->tabPage5->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// chart1
 			// 
-			chartArea3->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea3);
-			legend3->Name = L"Legend1";
-			this->chart1->Legends->Add(legend3);
+			chartArea2->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea2);
+			legend2->Name = L"Legend1";
+			this->chart1->Legends->Add(legend2);
 			this->chart1->Location = System::Drawing::Point(891, 488);
 			this->chart1->Name = L"chart1";
-			series3->ChartArea = L"ChartArea1";
-			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series3->Legend = L"Legend1";
-			series3->Name = L"chisl_solution";
-			this->chart1->Series->Add(series3);
+			series2->ChartArea = L"ChartArea1";
+			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series2->Legend = L"Legend1";
+			series2->Name = L"chisl_solution";
+			this->chart1->Series->Add(series2);
 			this->chart1->Size = System::Drawing::Size(642, 446);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
@@ -341,7 +365,7 @@ namespace kr9 {
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->Size = System::Drawing::Size(198, 26);
 			this->textBox3->TabIndex = 14;
-			this->textBox3->Text = L"0,000001";
+			this->textBox3->Text = L"0.000001";
 			// 
 			// label6
 			// 
@@ -371,10 +395,12 @@ namespace kr9 {
 			this->textBoxEpsilon->Name = L"textBoxEpsilon";
 			this->textBoxEpsilon->Size = System::Drawing::Size(198, 26);
 			this->textBoxEpsilon->TabIndex = 16;
-			this->textBoxEpsilon->Text = L"0,000001";
+			this->textBoxEpsilon->Text = L"0.000001";
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->labelMistakeIndex);
+			this->groupBox1->Controls->Add(this->label16);
 			this->groupBox1->Controls->Add(this->labelMistake);
 			this->groupBox1->Controls->Add(this->labelMin);
 			this->groupBox1->Controls->Add(this->labelMax);
@@ -397,6 +423,123 @@ namespace kr9 {
 			this->groupBox1->TabIndex = 18;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Справка";
+			// 
+			// labelMistake
+			// 
+			this->labelMistake->AutoSize = true;
+			this->labelMistake->Location = System::Drawing::Point(213, 183);
+			this->labelMistake->Name = L"labelMistake";
+			this->labelMistake->Size = System::Drawing::Size(18, 20);
+			this->labelMistake->TabIndex = 13;
+			this->labelMistake->Text = L"0";
+			// 
+			// labelMin
+			// 
+			this->labelMin->AutoSize = true;
+			this->labelMin->Location = System::Drawing::Point(180, 163);
+			this->labelMin->Name = L"labelMin";
+			this->labelMin->Size = System::Drawing::Size(18, 20);
+			this->labelMin->TabIndex = 12;
+			this->labelMin->Text = L"0";
+			// 
+			// labelMax
+			// 
+			this->labelMax->AutoSize = true;
+			this->labelMax->Location = System::Drawing::Point(187, 142);
+			this->labelMax->Name = L"labelMax";
+			this->labelMax->Size = System::Drawing::Size(18, 20);
+			this->labelMax->TabIndex = 11;
+			this->labelMax->Text = L"0";
+			// 
+			// labelSmaller
+			// 
+			this->labelSmaller->AutoSize = true;
+			this->labelSmaller->Location = System::Drawing::Point(157, 122);
+			this->labelSmaller->Name = L"labelSmaller";
+			this->labelSmaller->Size = System::Drawing::Size(18, 20);
+			this->labelSmaller->TabIndex = 10;
+			this->labelSmaller->Text = L"0";
+			// 
+			// labelDouble
+			// 
+			this->labelDouble->AutoSize = true;
+			this->labelDouble->Location = System::Drawing::Point(163, 102);
+			this->labelDouble->Name = L"labelDouble";
+			this->labelDouble->Size = System::Drawing::Size(18, 20);
+			this->labelDouble->TabIndex = 9;
+			this->labelDouble->Text = L"0";
+			// 
+			// labelN
+			// 
+			this->labelN->AutoSize = true;
+			this->labelN->Location = System::Drawing::Point(53, 82);
+			this->labelN->Name = L"labelN";
+			this->labelN->Size = System::Drawing::Size(18, 20);
+			this->labelN->TabIndex = 8;
+			this->labelN->Text = L"0";
+			// 
+			// label15
+			// 
+			this->label15->AutoSize = true;
+			this->label15->Location = System::Drawing::Point(20, 183);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(187, 20);
+			this->label15->TabIndex = 7;
+			this->label15->Text = L"Максимальная ошибка:";
+			// 
+			// label14
+			// 
+			this->label14->AutoSize = true;
+			this->label14->Location = System::Drawing::Point(20, 163);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(154, 20);
+			this->label14->TabIndex = 6;
+			this->label14->Text = L"Минимальный шаг:";
+			// 
+			// label13
+			// 
+			this->label13->AutoSize = true;
+			this->label13->Location = System::Drawing::Point(20, 162);
+			this->label13->Name = L"label13";
+			this->label13->Size = System::Drawing::Size(0, 20);
+			this->label13->TabIndex = 5;
+			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->Location = System::Drawing::Point(20, 142);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(161, 20);
+			this->label12->TabIndex = 4;
+			this->label12->Text = L"Максимальный шаг:";
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Location = System::Drawing::Point(20, 122);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(131, 20);
+			this->label11->TabIndex = 3;
+			this->label11->Text = L"Число делений:";
+			// 
+			// label10
+			// 
+			this->label10->AutoSize = true;
+			this->label10->Location = System::Drawing::Point(20, 102);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(137, 20);
+			this->label10->TabIndex = 2;
+			this->label10->Text = L"Число удвоений:";
+			this->label10->Click += gcnew System::EventHandler(this, &MyForm::label10_Click);
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Location = System::Drawing::Point(20, 82);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(27, 20);
+			this->label9->TabIndex = 1;
+			this->label9->Text = L"n=";
 			// 
 			// tabControl1
 			// 
@@ -488,9 +631,11 @@ namespace kr9 {
 			this->tabControl2->SelectedIndex = 0;
 			this->tabControl2->Size = System::Drawing::Size(256, 34);
 			this->tabControl2->TabIndex = 21;
+			this->tabControl2->Click += gcnew System::EventHandler(this, &MyForm::tabControl2_Click);
 			// 
 			// tabPage5
 			// 
+			this->tabPage5->Controls->Add(this->label1);
 			this->tabPage5->Location = System::Drawing::Point(4, 29);
 			this->tabPage5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->tabPage5->Name = L"tabPage5";
@@ -590,122 +735,32 @@ namespace kr9 {
 			this->checkBox1->Text = L"1";
 			this->checkBox1->UseVisualStyleBackColor = true;
 			// 
-			// label9
+			// label1
 			// 
-			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(20, 82);
-			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(27, 20);
-			this->label9->TabIndex = 1;
-			this->label9->Text = L"n=";
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(0, 0);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(51, 20);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"label1";
 			// 
-			// label10
+			// label16
 			// 
-			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(20, 102);
-			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(137, 20);
-			this->label10->TabIndex = 2;
-			this->label10->Text = L"Число удвоений:";
-			this->label10->Click += gcnew System::EventHandler(this, &MyForm::label10_Click);
+			this->label16->AutoSize = true;
+			this->label16->Location = System::Drawing::Point(20, 200);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(90, 20);
+			this->label16->TabIndex = 14;
+			this->label16->Text = L"в точке x =";
 			// 
-			// label11
+			// labelMistakeIndex
 			// 
-			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(20, 122);
-			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(131, 20);
-			this->label11->TabIndex = 3;
-			this->label11->Text = L"Число делений:";
-			// 
-			// label12
-			// 
-			this->label12->AutoSize = true;
-			this->label12->Location = System::Drawing::Point(20, 142);
-			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(161, 20);
-			this->label12->TabIndex = 4;
-			this->label12->Text = L"Максимальный шаг:";
-			// 
-			// label13
-			// 
-			this->label13->AutoSize = true;
-			this->label13->Location = System::Drawing::Point(20, 162);
-			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(0, 20);
-			this->label13->TabIndex = 5;
-			// 
-			// label14
-			// 
-			this->label14->AutoSize = true;
-			this->label14->Location = System::Drawing::Point(20, 163);
-			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(154, 20);
-			this->label14->TabIndex = 6;
-			this->label14->Text = L"Минимальный шаг:";
-			// 
-			// label15
-			// 
-			this->label15->AutoSize = true;
-			this->label15->Location = System::Drawing::Point(20, 183);
-			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(187, 20);
-			this->label15->TabIndex = 7;
-			this->label15->Text = L"Максимальная ошибка:";
-			// 
-			// labelN
-			// 
-			this->labelN->AutoSize = true;
-			this->labelN->Location = System::Drawing::Point(53, 82);
-			this->labelN->Name = L"labelN";
-			this->labelN->Size = System::Drawing::Size(18, 20);
-			this->labelN->TabIndex = 8;
-			this->labelN->Text = L"0";
-			// 
-			// labelDouble
-			// 
-			this->labelDouble->AutoSize = true;
-			this->labelDouble->Location = System::Drawing::Point(163, 102);
-			this->labelDouble->Name = L"labelDouble";
-			this->labelDouble->Size = System::Drawing::Size(18, 20);
-			this->labelDouble->TabIndex = 9;
-			this->labelDouble->Text = L"0";
-			// 
-			// labelSmaller
-			// 
-			this->labelSmaller->AutoSize = true;
-			this->labelSmaller->Location = System::Drawing::Point(157, 122);
-			this->labelSmaller->Name = L"labelSmaller";
-			this->labelSmaller->Size = System::Drawing::Size(18, 20);
-			this->labelSmaller->TabIndex = 10;
-			this->labelSmaller->Text = L"0";
-			// 
-			// labelMax
-			// 
-			this->labelMax->AutoSize = true;
-			this->labelMax->Location = System::Drawing::Point(187, 142);
-			this->labelMax->Name = L"labelMax";
-			this->labelMax->Size = System::Drawing::Size(18, 20);
-			this->labelMax->TabIndex = 11;
-			this->labelMax->Text = L"0";
-			// 
-			// labelMin
-			// 
-			this->labelMin->AutoSize = true;
-			this->labelMin->Location = System::Drawing::Point(180, 163);
-			this->labelMin->Name = L"labelMin";
-			this->labelMin->Size = System::Drawing::Size(18, 20);
-			this->labelMin->TabIndex = 12;
-			this->labelMin->Text = L"0";
-			// 
-			// labelMistake
-			// 
-			this->labelMistake->AutoSize = true;
-			this->labelMistake->Location = System::Drawing::Point(213, 183);
-			this->labelMistake->Name = L"labelMistake";
-			this->labelMistake->Size = System::Drawing::Size(18, 20);
-			this->labelMistake->TabIndex = 13;
-			this->labelMistake->Text = L"0";
+			this->labelMistakeIndex->AutoSize = true;
+			this->labelMistakeIndex->Location = System::Drawing::Point(108, 200);
+			this->labelMistakeIndex->Name = L"labelMistakeIndex";
+			this->labelMistakeIndex->Size = System::Drawing::Size(18, 20);
+			this->labelMistakeIndex->TabIndex = 15;
+			this->labelMistakeIndex->Text = L"0";
 			// 
 			// MyForm
 			// 
@@ -741,6 +796,8 @@ namespace kr9 {
 			this->groupBox1->PerformLayout();
 			this->tabControl1->ResumeLayout(false);
 			this->tabControl2->ResumeLayout(false);
+			this->tabPage5->ResumeLayout(false);
+			this->tabPage5->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			this->ResumeLayout(false);
@@ -764,29 +821,93 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 	double len= System::Convert::ToDouble(textBox1->Text);
 	double h= System::Convert::ToDouble(textBox2->Text);
+
+	//переменные для контроля длины шага
 	double modS = 0;
+	double prevX = x0;
+	double prevV = v0;
+
+	int counterU = 0;
+	int counterL = 0;
+
+	double maxH = h;
+	double minH = h;
+
+	double maxMistake=0;
+	int mistakeIndex = 0;
 
 	listView1->Items->Clear();
 
 	array<String^ >^ ms = gcnew array< System::String^ >(7);
 	
+	chart1->Series["chisl_solution"]->Points->AddXY(x0, v0);//отрисовка начальной точки
 
-	for (int i = 0; i < len && v0>0; i++)
+	//
+	ms[0] = "0";
+	ms[1] = x0.ToString();
+	ms[2] = h.ToString();
+	ms[3] = v0.ToString();
+	ms[4] = vkr.ToString();
+	ms[5] = (vkr - v0).ToString();
+	ms[6] = en.ToString();
+
+	ListViewItem^ listViewItem0 = gcnew ListViewItem(ms);
+	listView1->Items->Add(listViewItem0);
+
+
+	int i = 0;
+	for (i; i < len && v0>0; i++)
 	{
-		chart1->Series["chisl_solution"]->Points->AddXY(x0, v0);
 		vkr = vkrNext(x0, v0, h, alpha, sigma);
 		x0 = xNext(x0, h);
 		v0 = vNext(x0, v0, h, alpha, sigma);
 		en = pow(2,3)*(vkr - v0) / (pow(2, 3) - 1);
 
-		
+		modS = mods(prevX, prevV, h, alpha, sigma);
+		//MessageBox::Show(modS.ToString());
+		//если |S|<Epsilon->увеличиваем шаг в 2 раза и принимаем нашу точку
+		if (modS<epsilon)
+		{
+			//MessageBox::Show(modS.ToString());
+			//MessageBox::Show(epsilon.ToString());
+			h *= 2;
+			if (maxH<h)
+			{
+				maxH = h;
+			}
+			counterU++;
+		}
+		//если |S|>Epsilon->уменьшаем шаг в 2 раза и расчитываем точку заного
+		if (modS>epsilon)
+		{
+			h /= 2;
+			if (minH>h)
+			{
+				minH = h;
+			}
+			counterL++;
+			//расчёт новой точки
+			vkr = vkrNext(prevX, prevV, h, alpha, sigma);
+			x0 = xNext(prevX, h);
+			v0 = vNext(prevX, prevV, h, alpha, sigma);
+			en = pow(2, 3) * (vkr - prevV) / (pow(2, 3) - 1);
+		}
+
+		if (maxMistake < modS)
+		{
+			maxMistake = modS;
+			mistakeIndex = i;
+		}
+
+
+		prevX = x0;
+		prevV = v0;
 
 
 
+		chart1->Series["chisl_solution"]->Points->AddXY(x0, v0);//отрисовка точки
 
-
-
-		//Заполнение справки и таблицы(ЗАКОНЧИТЬ)==============================
+		//Заполнение таблицы==============================
 		
 		ms[0] = i.ToString();
 		ms[1] = x0.ToString();
@@ -799,9 +920,23 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		ListViewItem^ listViewItem0 = gcnew ListViewItem(ms);
 		listView1->Items->Add(listViewItem0);
 	}
-	chart1->Series["chisl_solution"]->Points->AddXY(x0, v0);
-	x0 = xNext(x0, h);
-	v0 = vNext(x0, v0, h, alpha, sigma);
+
+	//Заполнение справки=============
+	labelN->Text = i.ToString();
+	labelDouble->Text = counterU.ToString();
+	labelSmaller->Text = counterL.ToString();
+	labelMax->Text = maxH.ToString();
+	labelMin->Text = minH.ToString();
+	labelMistake->Text = maxMistake.ToString();
+	labelMistakeIndex->Text = mistakeIndex.ToString();
+
+
+
+
+
+	//chart1->Series["chisl_solution"]->Points->AddXY(x0, v0);
+	//x0 = xNext(x0, h);
+	//v0 = vNext(x0, v0, h, alpha, sigma);
 	
 }
 private: System::Void splitContainer1_Panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
@@ -818,6 +953,9 @@ private: System::Void tabControl1_Click(System::Object^ sender, System::EventArg
 	tabControl2->SelectTab(tabControl1->SelectedIndex);
 }
 private: System::Void label10_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void tabControl2_Click(System::Object^ sender, System::EventArgs^ e) {
+	tabControl1->SelectTab(tabControl2->SelectedIndex);
 }
 };
 }
