@@ -141,9 +141,12 @@ namespace kr9 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -168,6 +171,8 @@ namespace kr9 {
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->textBoxEpsilon = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->labelMistakeIndex = (gcnew System::Windows::Forms::Label());
+			this->label16 = (gcnew System::Windows::Forms::Label());
 			this->labelMistake = (gcnew System::Windows::Forms::Label());
 			this->labelMin = (gcnew System::Windows::Forms::Label());
 			this->labelMax = (gcnew System::Windows::Forms::Label());
@@ -190,6 +195,7 @@ namespace kr9 {
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->tabControl2 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage5 = (gcnew System::Windows::Forms::TabPage());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->tabPage6 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage7 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage8 = (gcnew System::Windows::Forms::TabPage());
@@ -198,9 +204,6 @@ namespace kr9 {
 			this->checkBox3 = (gcnew System::Windows::Forms::CheckBox());
 			this->checkBox2 = (gcnew System::Windows::Forms::CheckBox());
 			this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label16 = (gcnew System::Windows::Forms::Label());
-			this->labelMistakeIndex = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			this->tabControl1->SuspendLayout();
@@ -211,17 +214,32 @@ namespace kr9 {
 			// 
 			// chart1
 			// 
-			chartArea2->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea2);
-			legend2->Name = L"Legend1";
-			this->chart1->Legends->Add(legend2);
+			chartArea1->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->chart1->Legends->Add(legend1);
 			this->chart1->Location = System::Drawing::Point(891, 488);
 			this->chart1->Name = L"chart1";
+			series1->ChartArea = L"ChartArea1";
+			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series1->Legend = L"Legend1";
+			series1->Name = L"Solution_U0_1";
 			series2->ChartArea = L"ChartArea1";
 			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
 			series2->Legend = L"Legend1";
-			series2->Name = L"chisl_solution";
+			series2->Name = L"Solution_U0_2";
+			series3->ChartArea = L"ChartArea1";
+			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series3->Legend = L"Legend1";
+			series3->Name = L"Solution_U0_3";
+			series4->ChartArea = L"ChartArea1";
+			series4->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series4->Legend = L"Legend1";
+			series4->Name = L"Solution_U0_4";
+			this->chart1->Series->Add(series1);
 			this->chart1->Series->Add(series2);
+			this->chart1->Series->Add(series3);
+			this->chart1->Series->Add(series4);
 			this->chart1->Size = System::Drawing::Size(642, 446);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
@@ -423,6 +441,24 @@ namespace kr9 {
 			this->groupBox1->TabIndex = 18;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Справка";
+			// 
+			// labelMistakeIndex
+			// 
+			this->labelMistakeIndex->AutoSize = true;
+			this->labelMistakeIndex->Location = System::Drawing::Point(108, 200);
+			this->labelMistakeIndex->Name = L"labelMistakeIndex";
+			this->labelMistakeIndex->Size = System::Drawing::Size(18, 20);
+			this->labelMistakeIndex->TabIndex = 15;
+			this->labelMistakeIndex->Text = L"0";
+			// 
+			// label16
+			// 
+			this->label16->AutoSize = true;
+			this->label16->Location = System::Drawing::Point(20, 200);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(90, 20);
+			this->label16->TabIndex = 14;
+			this->label16->Text = L"в точке x =";
 			// 
 			// labelMistake
 			// 
@@ -645,6 +681,15 @@ namespace kr9 {
 			this->tabPage5->Text = L"U0=1";
 			this->tabPage5->UseVisualStyleBackColor = true;
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(0, 0);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(51, 20);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"label1";
+			// 
 			// tabPage6
 			// 
 			this->tabPage6->Location = System::Drawing::Point(4, 29);
@@ -735,33 +780,6 @@ namespace kr9 {
 			this->checkBox1->Text = L"1";
 			this->checkBox1->UseVisualStyleBackColor = true;
 			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(0, 0);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(51, 20);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"label1";
-			// 
-			// label16
-			// 
-			this->label16->AutoSize = true;
-			this->label16->Location = System::Drawing::Point(20, 200);
-			this->label16->Name = L"label16";
-			this->label16->Size = System::Drawing::Size(90, 20);
-			this->label16->TabIndex = 14;
-			this->label16->Text = L"в точке x =";
-			// 
-			// labelMistakeIndex
-			// 
-			this->labelMistakeIndex->AutoSize = true;
-			this->labelMistakeIndex->Location = System::Drawing::Point(108, 200);
-			this->labelMistakeIndex->Name = L"labelMistakeIndex";
-			this->labelMistakeIndex->Size = System::Drawing::Size(18, 20);
-			this->labelMistakeIndex->TabIndex = 15;
-			this->labelMistakeIndex->Text = L"0";
-			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
@@ -810,7 +828,12 @@ namespace kr9 {
 private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->chart1->Series["chisl_solution"]->Points->Clear();
+	
+	this->chart1->Series["Solution_U0_1"]->Points->Clear();
+	this->chart1->Series["Solution_U0_2"]->Points->Clear();
+	this->chart1->Series["Solution_U0_3"]->Points->Clear();
+	this->chart1->Series["Solution_U0_4"]->Points->Clear();
+
 	double x0 = 0;
 	double v0 = System::Convert::ToDouble(tabControl1->SelectedIndex+1);
 	double vkr = v0;
@@ -840,7 +863,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 	array<String^ >^ ms = gcnew array< System::String^ >(7);
 	
-	chart1->Series["chisl_solution"]->Points->AddXY(x0, v0);//отрисовка начальной точки
+	chart1->Series["Solution_U0_1"]->Points->AddXY(x0, v0);//отрисовка начальной точки
 
 	//
 	ms[0] = "0";
@@ -905,7 +928,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 
 
-		chart1->Series["chisl_solution"]->Points->AddXY(x0, v0);//отрисовка точки
+		chart1->Series["Solution_U0_1"]->Points->AddXY(x0, v0);//отрисовка точки
 
 		//Заполнение таблицы==============================
 		
