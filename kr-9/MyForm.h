@@ -1723,6 +1723,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			continue;
 		}
 		h = System::Convert::ToDouble(textBox2->Text);
+		en = 0;
 		x0 = 0;
 		double v0 = j + 1;
 		double vkr = v0;
