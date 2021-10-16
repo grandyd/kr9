@@ -77,9 +77,9 @@ namespace kr9 {
 	private: System::Windows::Forms::TabPage^ tabPage2;
 	private: System::Windows::Forms::TabPage^ tabPage3;
 	private: System::Windows::Forms::TabPage^ tabPage4;
-	private: System::Windows::Forms::Label^ label8;
 
-	private: System::Windows::Forms::ComboBox^ comboBox1;
+
+
 	private: System::Windows::Forms::TabControl^ tabControl2;
 	private: System::Windows::Forms::TabPage^ tabPage5;
 	private: System::Windows::Forms::TabPage^ tabPage6;
@@ -195,7 +195,13 @@ private: System::Windows::Forms::Label^ label36;
 private: System::Windows::Forms::Label^ label37;
 private: System::Windows::Forms::Label^ label38;
 private: System::Windows::Forms::Label^ label39;
-private: System::Windows::Forms::Button^ Button2;
+private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
+private: System::Windows::Forms::ToolStripMenuItem^ областьЗначенийToolStripMenuItem;
+
+
+
+private: System::ComponentModel::IContainer^ components;
+
 
 
 
@@ -210,7 +216,7 @@ private: System::Windows::Forms::Button^ Button2;
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 
@@ -223,6 +229,7 @@ private: System::Windows::Forms::Button^ Button2;
 			double v1 = vNext(x, v, h, alpha, sigma);
 			//MessageBox::Show((v1kr - v1).ToString());
 			double s = (v1kr - v1)/(pow(2,3)-1);//pow(2,3)-возведение 2 в степень порядка метода
+			//MessageBox::Show((abs(s)).ToString());
 			return abs(s);
 		}
 
@@ -236,12 +243,13 @@ private: System::Windows::Forms::Button^ Button2;
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series5 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series6 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series7 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series8 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			this->components = (gcnew System::ComponentModel::Container());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -335,8 +343,6 @@ private: System::Windows::Forms::Button^ Button2;
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage3 = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage4 = (gcnew System::Windows::Forms::TabPage());
-			this->label8 = (gcnew System::Windows::Forms::Label());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->tabControl2 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage5 = (gcnew System::Windows::Forms::TabPage());
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -372,7 +378,8 @@ private: System::Windows::Forms::Button^ Button2;
 			this->columnHeader26 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader27 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader28 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->Button2 = (gcnew System::Windows::Forms::Button());
+			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->областьЗначенийToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			this->panel4->SuspendLayout();
@@ -383,36 +390,37 @@ private: System::Windows::Forms::Button^ Button2;
 			this->tabControl2->SuspendLayout();
 			this->tabPage5->SuspendLayout();
 			this->groupBox2->SuspendLayout();
+			this->contextMenuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// chart1
 			// 
-			chartArea2->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea2);
-			legend2->Name = L"Legend1";
-			this->chart1->Legends->Add(legend2);
+			chartArea1->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->chart1->Legends->Add(legend1);
 			this->chart1->Location = System::Drawing::Point(891, 488);
 			this->chart1->Name = L"chart1";
-			series5->ChartArea = L"ChartArea1";
-			series5->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series5->Legend = L"Legend1";
-			series5->Name = L"Solution_U0_1";
-			series6->ChartArea = L"ChartArea1";
-			series6->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series6->Legend = L"Legend1";
-			series6->Name = L"Solution_U0_2";
-			series7->ChartArea = L"ChartArea1";
-			series7->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series7->Legend = L"Legend1";
-			series7->Name = L"Solution_U0_3";
-			series8->ChartArea = L"ChartArea1";
-			series8->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series8->Legend = L"Legend1";
-			series8->Name = L"Solution_U0_4";
-			this->chart1->Series->Add(series5);
-			this->chart1->Series->Add(series6);
-			this->chart1->Series->Add(series7);
-			this->chart1->Series->Add(series8);
+			series1->ChartArea = L"ChartArea1";
+			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series1->Legend = L"Legend1";
+			series1->Name = L"Solution_U0_1";
+			series2->ChartArea = L"ChartArea1";
+			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series2->Legend = L"Legend1";
+			series2->Name = L"Solution_U0_2";
+			series3->ChartArea = L"ChartArea1";
+			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series3->Legend = L"Legend1";
+			series3->Name = L"Solution_U0_3";
+			series4->ChartArea = L"ChartArea1";
+			series4->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series4->Legend = L"Legend1";
+			series4->Name = L"Solution_U0_4";
+			this->chart1->Series->Add(series1);
+			this->chart1->Series->Add(series2);
+			this->chart1->Series->Add(series3);
+			this->chart1->Series->Add(series4);
 			this->chart1->Size = System::Drawing::Size(642, 446);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
@@ -431,11 +439,13 @@ private: System::Windows::Forms::Button^ Button2;
 			// label2
 			// 
 			this->label2->AutoSize = true;
+			this->label2->ContextMenuStrip = this->contextMenuStrip1;
 			this->label2->Location = System::Drawing::Point(465, 278);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(57, 20);
 			this->label2->TabIndex = 5;
 			this->label2->Text = L"alpha=";
+			this->label2->Click += gcnew System::EventHandler(this, &MyForm::label2_Click);
 			// 
 			// textBoxAlpha
 			// 
@@ -453,6 +463,7 @@ private: System::Windows::Forms::Button^ Button2;
 			this->label3->Size = System::Drawing::Size(60, 20);
 			this->label3->TabIndex = 7;
 			this->label3->Text = L"sigma=";
+			this->label3->Click += gcnew System::EventHandler(this, &MyForm::label3_Click);
 			// 
 			// textBoxSigma
 			// 
@@ -1289,28 +1300,6 @@ private: System::Windows::Forms::Button^ Button2;
 			this->tabPage4->Text = L"U0=4";
 			this->tabPage4->UseVisualStyleBackColor = true;
 			// 
-			// label8
-			// 
-			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(51, 15);
-			this->label8->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
-			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(67, 20);
-			this->label8->TabIndex = 19;
-			this->label8->Text = L"Задача";
-			// 
-			// comboBox1
-			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Тестовая", L"Основная" });
-			this->comboBox1->Location = System::Drawing::Point(56, 65);
-			this->comboBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(169, 28);
-			this->comboBox1->TabIndex = 20;
-			this->comboBox1->Tag = L"";
-			this->comboBox1->Text = L"Тестовая";
-			// 
 			// tabControl2
 			// 
 			this->tabControl2->Controls->Add(this->tabPage5);
@@ -1572,29 +1561,30 @@ private: System::Windows::Forms::Button^ Button2;
 			// 
 			this->columnHeader28->Text = L"Оц. л.п.";
 			// 
-			// Button2
+			// contextMenuStrip1
 			// 
-			this->Button2->Location = System::Drawing::Point(56, 142);
-			this->Button2->Name = L"Button2";
-			this->Button2->Size = System::Drawing::Size(171, 31);
-			this->Button2->TabIndex = 26;
-			this->Button2->Text = L"Выход";
-			this->Button2->UseVisualStyleBackColor = true;
-			this->Button2->Click += gcnew System::EventHandler(this, &MyForm::Выход_Click);
+			this->contextMenuStrip1->ImageScalingSize = System::Drawing::Size(24, 24);
+			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->областьЗначенийToolStripMenuItem });
+			this->contextMenuStrip1->Name = L"contextMenuStrip1";
+			this->contextMenuStrip1->Size = System::Drawing::Size(232, 36);
+			// 
+			// областьЗначенийToolStripMenuItem
+			// 
+			this->областьЗначенийToolStripMenuItem->Name = L"областьЗначенийToolStripMenuItem";
+			this->областьЗначенийToolStripMenuItem->Size = System::Drawing::Size(231, 32);
+			this->областьЗначенийToolStripMenuItem->Text = L"Область значений";
+			this->областьЗначенийToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::областьЗначенийToolStripMenuItem_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1664, 1025);
-			this->Controls->Add(this->Button2);
 			this->Controls->Add(this->listView4);
 			this->Controls->Add(this->listView3);
 			this->Controls->Add(this->listView2);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->tabControl2);
-			this->Controls->Add(this->comboBox1);
-			this->Controls->Add(this->label8);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->textBoxEpsilon);
@@ -1613,7 +1603,7 @@ private: System::Windows::Forms::Button^ Button2;
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->chart1);
 			this->Name = L"MyForm";
-			this->Text = L"MyForm";
+			this->Text = L"Иванов Георгий 1 команда, задача №9";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
 			this->groupBox1->ResumeLayout(false);
@@ -1631,6 +1621,7 @@ private: System::Windows::Forms::Button^ Button2;
 			this->tabPage5->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
+			this->contextMenuStrip1->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -1654,8 +1645,9 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	double en;
 	double epsilon = System::Convert::ToDouble(textBoxEpsilon->Text);
 
-	double len= System::Convert::ToDouble(textBox1->Text);
+	int len= System::Convert::ToInt16(textBox1->Text);
 	double h= System::Convert::ToDouble(textBox2->Text);
+	double prevH = h;
 
 	//переменные для контроля длины шага
 	double modS = 0;
@@ -1739,7 +1731,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		//
 		ms[0] = "0";
 		ms[1] = x0.ToString();
-		ms[2] = h.ToString();
+		ms[2] = "0";
 		ms[3] = v0.ToString();
 		ms[4] = vkr.ToString();
 		ms[5] = (vkr - v0).ToString();
@@ -1767,6 +1759,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		int i = 0;
 		for (i; i < len && v0>0; i++)
 		{
+			prevH = h;
+
 			vkr = vkrNext(x0, v0, h, alpha, sigma);
 			x0 = xNext(x0, h);
 			v0 = vNext(x0, v0, h, alpha, sigma);
@@ -1784,7 +1778,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 				counterU++;
 			}
 			//если |S|>Epsilon->уменьшаем шаг в 2 раза и расчитываем точку заного
-			if (modS > epsilon)
+			else if (modS > epsilon)
 			{
 				h /= 2;
 				if (minH > h)
@@ -1796,7 +1790,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 				vkr = vkrNext(prevX, prevV, h, alpha, sigma);
 				x0 = xNext(prevX, h);
 				v0 = vNext(prevX, prevV, h, alpha, sigma);
-				en = pow(2, 3) * (vkr - prevV) / (pow(2, 3) - 1);
+				en = pow(2, 3) * (vkr - prevV) / (pow(2, 3) - 1)*pow(2,3);
 			}
 
 			if (maxMistake < modS)
@@ -1806,8 +1800,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			}
 
 
-			prevX = x0;
-			prevV = v0;
+			
 
 
 
@@ -1818,10 +1811,13 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			ms[0] = i.ToString();
 			ms[1] = x0.ToString();
 			ms[2] = h.ToString();
+			ms[2] = (x0 - prevX).ToString();
 			ms[3] = v0.ToString();
 			ms[4] = vkr.ToString();
 			ms[5] = (vkr - v0).ToString();
 			ms[6] = en.ToString();
+
+			//prevH = h;
 
 			ListViewItem^ listViewItem0 = gcnew ListViewItem(ms);//заполнение таблиц для каждого графика
 			switch (j)
@@ -1839,6 +1835,12 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 				listView4->Items->Add(listViewItem0);
 				break;
 			}
+
+
+
+			prevX = x0;
+			prevV = v0;
+
 		}
 
 		//Заполнение справок для каждого графика
@@ -2098,6 +2100,20 @@ private: System::Void tabControl2_Selected(System::Object^ sender, System::Windo
 }
 private: System::Void Выход_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
+}
+private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
+	//MessageBox::Show("Определяет угол между стенкой и нормалью");
+}
+private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("Определяет площадь отверстия, через которое вытекает жидкость");
+}
+private: System::Void contextMenuStrip1_Opening(System::Object^ sender, System::ComponentModel::CancelEventArgs^ e) {
+}
+private: System::Void toolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("Значения больше 0");
+}
+private: System::Void областьЗначенийToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("sda");
 }
 };
 }
