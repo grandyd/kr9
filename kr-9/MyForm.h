@@ -3,6 +3,7 @@
 //#include <pair>
 #include <utility>
 #include <string>
+#include <vector>
 
 //using namespace std;
 //using namespace System;
@@ -36,6 +37,7 @@ namespace kr9 {
 		/// </summary>
 		~MyForm()
 		{
+			delete VecU0;
 			if (components)
 			{
 				delete components;
@@ -138,7 +140,7 @@ namespace kr9 {
 
 
 
-private: System::Windows::Forms::Panel^ panel1;
+	private: System::Windows::Forms::Panel^ panel1;
 
 
 
@@ -195,16 +197,16 @@ private: System::Windows::Forms::Panel^ panel1;
 
 
 
-private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
-private: System::Windows::Forms::ToolStripMenuItem^ областьЗначенийToolStripMenuItem;
-private: System::Windows::Forms::Button^ button2;
-private: System::Windows::Forms::TextBox^ textBoxU0;
+	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
+	private: System::Windows::Forms::ToolStripMenuItem^ областьЗначенийToolStripMenuItem;
+	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::TextBox^ textBoxU0;
 
-private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label1;
 
 
 
-private: System::ComponentModel::IContainer^ components;
+	private: System::ComponentModel::IContainer^ components;
 
 
 
@@ -232,11 +234,13 @@ private: System::ComponentModel::IContainer^ components;
 			double v1kr = vNext(x12, v12, h / 2, alpha, sigma);
 			double v1 = vNext(x, v, h, alpha, sigma);
 			//MessageBox::Show((v1kr - v1).ToString());
-			double s = (v1kr - v1)/(pow(2,3)-1);//pow(2,3)-возведение 2 в степень порядка метода
+			double s = (v1kr - v1) / (pow(2, 3) - 1);//pow(2,3)-возведение 2 в степень порядка метода
 			//MessageBox::Show((abs(s)).ToString());
 			return abs(s);
 		}
 
+		int ChartSeriesCounter = 0;//счетчик числа графиков
+		std::vector<double>* VecU0=new std::vector<double>;
 
 
 
@@ -248,12 +252,8 @@ private: System::ComponentModel::IContainer^ components;
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series5 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series6 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series7 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series8 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -309,32 +309,12 @@ private: System::ComponentModel::IContainer^ components;
 			// 
 			// chart1
 			// 
-			chartArea2->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea2);
-			legend2->Name = L"Legend1";
-			this->chart1->Legends->Add(legend2);
+			chartArea1->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->chart1->Legends->Add(legend1);
 			this->chart1->Location = System::Drawing::Point(891, 488);
 			this->chart1->Name = L"chart1";
-			series5->ChartArea = L"ChartArea1";
-			series5->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series5->Legend = L"Legend1";
-			series5->Name = L"Solution_U0_1";
-			series6->ChartArea = L"ChartArea1";
-			series6->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series6->Legend = L"Legend1";
-			series6->Name = L"Solution_U0_2";
-			series7->ChartArea = L"ChartArea1";
-			series7->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series7->Legend = L"Legend1";
-			series7->Name = L"Solution_U0_3";
-			series8->ChartArea = L"ChartArea1";
-			series8->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series8->Legend = L"Legend1";
-			series8->Name = L"Solution_U0_4";
-			this->chart1->Series->Add(series5);
-			this->chart1->Series->Add(series6);
-			this->chart1->Series->Add(series7);
-			this->chart1->Series->Add(series8);
 			this->chart1->Size = System::Drawing::Size(642, 446);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
@@ -786,10 +766,42 @@ private: System::ComponentModel::IContainer^ components;
 private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	
-	//this->chart1->Series["Solution_U0_1"]->Points->Clear();
+	//Проверки заполнения полей параметров системы
+	if (textBoxAlpha->Text=="")
+	{
+		MessageBox::Show("Вы не задали параметр Alpha");
+		return;
+	}
+	else if (textBoxSigma->Text=="")
+	{
+		MessageBox::Show("Вы не задали параметр Sigma");
+		return;
+	}
+	else if (textBoxU0->Text=="")
+	{
+		MessageBox::Show("Вы не задали начальное значение задачи Коши");
+		return;
+	}
 
+	//Проверка наличия графика U0
 	double u0 = System::Convert::ToDouble(textBoxU0->Text);
+	
+	for (auto i = VecU0->begin(); i!= VecU0->end(); i++)
+	{
+		if (*i==u0)
+		{
+			MessageBox::Show("График для U0=" + u0.ToString() + " уже создан");
+			return;
+		}
+	}
+
+	VecU0->push_back(u0);
+	//===========================
+
+	ChartSeriesCounter++;
+
+	
+
 
 	double x0 = 0;
 	
@@ -801,6 +813,15 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	int len= System::Convert::ToInt16(textBox1->Text);
 	double h= System::Convert::ToDouble(textBox2->Text);
 	double prevH = h;
+
+
+	String^ SeriesName = "U0=" + u0.ToString() + " Alpha=" + alpha.ToString() + " Sigma=" + sigma.ToString();
+		//String^ SeriesName("График для U0=");
+		//SeriesName = SeriesName + u0.ToString();
+	chart1->Series->Add(SeriesName);
+	chart1->Series[SeriesName]->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+
+
 
 	//переменные для контроля длины шага
 	double modS = 0;
@@ -834,7 +855,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 
 		//
-		chart1->Series["Solution_U0_1"]->Points->AddXY(x0, v0);//отрисовка начальной точки
+		chart1->Series[SeriesName]->Points->AddXY(x0, v0);//отрисовка начальной точки
 
 		//
 		ms[0] = "0";
@@ -899,7 +920,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 
 
-			chart1->Series["Solution_U0_1"]->Points->AddXY(x0, v0);//отрисовка точки
+			chart1->Series[SeriesName]->Points->AddXY(x0, v0);//отрисовка точки
 
 			//Заполнение таблицы==============================
 
@@ -991,7 +1012,7 @@ private: System::Void областьЗначенийToolStripMenuItem_Click(System::Object^ sen
 	MessageBox::Show("sda");
 }
 private: System::Void button2_Click_2(System::Object^ sender, System::EventArgs^ e) {
-	this->chart1->Series["Solution_U0_1"]->Points->Clear();
+	this->chart1->Series->Clear();
 }
 };
 }
