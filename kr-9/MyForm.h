@@ -214,6 +214,10 @@ private: System::Windows::Forms::ToolStripMenuItem^ описаниеToolStripMenuItem2;
 private: System::Windows::Forms::GroupBox^ groupBox3;
 private: System::Windows::Forms::TextBox^ textBoxX0;
 private: System::Windows::Forms::Label^ label8;
+private: System::Windows::Forms::ContextMenuStrip^ contextMenuStripX0;
+private: System::Windows::Forms::ToolStripMenuItem^ областьЗначенийToolStripMenuItem3;
+private: System::Windows::Forms::ToolStripMenuItem^ описаниеToolStripMenuItem3;
+
 
 
 
@@ -321,6 +325,9 @@ private: System::Windows::Forms::Label^ label8;
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->textBoxX0 = (gcnew System::Windows::Forms::TextBox());
 			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->contextMenuStripX0 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->областьЗначенийToolStripMenuItem3 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->описаниеToolStripMenuItem3 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->contextMenuStripAlpha->SuspendLayout();
 			this->contextMenuStripSigma->SuspendLayout();
@@ -329,6 +336,7 @@ private: System::Windows::Forms::Label^ label8;
 			this->groupBox2->SuspendLayout();
 			this->contextMenuStripU0->SuspendLayout();
 			this->groupBox3->SuspendLayout();
+			this->contextMenuStripX0->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// chart1
@@ -844,6 +852,30 @@ private: System::Windows::Forms::Label^ label8;
 			this->label8->TabIndex = 26;
 			this->label8->Text = L"X0=";
 			// 
+			// contextMenuStripX0
+			// 
+			this->contextMenuStripX0->ImageScalingSize = System::Drawing::Size(24, 24);
+			this->contextMenuStripX0->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->областьЗначенийToolStripMenuItem3,
+					this->описаниеToolStripMenuItem3
+			});
+			this->contextMenuStripX0->Name = L"contextMenuStripX0";
+			this->contextMenuStripX0->Size = System::Drawing::Size(232, 68);
+			// 
+			// областьЗначенийToolStripMenuItem3
+			// 
+			this->областьЗначенийToolStripMenuItem3->Name = L"областьЗначенийToolStripMenuItem3";
+			this->областьЗначенийToolStripMenuItem3->Size = System::Drawing::Size(231, 32);
+			this->областьЗначенийToolStripMenuItem3->Text = L"Область значений";
+			this->областьЗначенийToolStripMenuItem3->Click += gcnew System::EventHandler(this, &MyForm::областьЗначенийToolStripMenuItem3_Click);
+			// 
+			// описаниеToolStripMenuItem3
+			// 
+			this->описаниеToolStripMenuItem3->Name = L"описаниеToolStripMenuItem3";
+			this->описаниеToolStripMenuItem3->Size = System::Drawing::Size(231, 32);
+			this->описаниеToolStripMenuItem3->Text = L"Описание";
+			this->описаниеToolStripMenuItem3->Click += gcnew System::EventHandler(this, &MyForm::описаниеToolStripMenuItem3_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
@@ -879,6 +911,7 @@ private: System::Windows::Forms::Label^ label8;
 			this->contextMenuStripU0->ResumeLayout(false);
 			this->groupBox3->ResumeLayout(false);
 			this->groupBox3->PerformLayout();
+			this->contextMenuStripX0->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -1154,6 +1187,12 @@ private: System::Void описаниеToolStripMenuItem2_Click(System::Object^ sender, S
 	MessageBox::Show("U0 определяет начальный уровень воды в сосуде");
 }
 private: System::Void labelMistakeIndex1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void областьЗначенийToolStripMenuItem3_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("Область значений: любое действительное число");
+}
+private: System::Void описаниеToolStripMenuItem3_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("Определяет начальное значение X для задачи Коши");
 }
 };
 }
