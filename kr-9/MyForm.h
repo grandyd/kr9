@@ -260,8 +260,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ îïèñàíèåToolStripMenuItem2;
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea4 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -326,10 +326,10 @@ private: System::Windows::Forms::ToolStripMenuItem^ îïèñàíèåToolStripMenuItem2;
 			// 
 			// chart1
 			// 
-			chartArea1->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea1);
-			legend1->Name = L"Legend1";
-			this->chart1->Legends->Add(legend1);
+			chartArea4->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea4);
+			legend4->Name = L"Legend1";
+			this->chart1->Legends->Add(legend4);
 			this->chart1->Location = System::Drawing::Point(891, 488);
 			this->chart1->Name = L"chart1";
 			this->chart1->Size = System::Drawing::Size(642, 446);
@@ -597,7 +597,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ îïèñàíèåToolStripMenuItem2;
 			this->panel1->Controls->Add(this->label9);
 			this->panel1->Location = System::Drawing::Point(13, 70);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(234, 168);
+			this->panel1->Size = System::Drawing::Size(475, 168);
 			this->panel1->TabIndex = 16;
 			// 
 			// labelMistakeIndex1
@@ -622,6 +622,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ îïèñàíèåToolStripMenuItem2;
 			// 
 			this->labelMistake1->AutoSize = true;
 			this->labelMistake1->Location = System::Drawing::Point(200, 113);
+			this->labelMistake1->MaximumSize = System::Drawing::Size(300, 0);
 			this->labelMistake1->Name = L"labelMistake1";
 			this->labelMistake1->Size = System::Drawing::Size(18, 20);
 			this->labelMistake1->TabIndex = 13;
@@ -640,6 +641,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ îïèñàíèåToolStripMenuItem2;
 			// 
 			this->labelMax1->AutoSize = true;
 			this->labelMax1->Location = System::Drawing::Point(174, 72);
+			this->labelMax1->MaximumSize = System::Drawing::Size(100, 0);
 			this->labelMax1->Name = L"labelMax1";
 			this->labelMax1->Size = System::Drawing::Size(18, 20);
 			this->labelMax1->TabIndex = 11;
@@ -667,6 +669,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ îïèñàíèåToolStripMenuItem2;
 			// 
 			this->labelN1->AutoSize = true;
 			this->labelN1->Location = System::Drawing::Point(40, 12);
+			this->labelN1->MaximumSize = System::Drawing::Size(100, 0);
 			this->labelN1->Name = L"labelN1";
 			this->labelN1->Size = System::Drawing::Size(18, 20);
 			this->labelN1->TabIndex = 8;
@@ -914,7 +917,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	double minH = h;
 
 	double maxMistake=0;
-	int mistakeIndex = 0;
+	double mistakeIndex = 0;
 
 	listView1->Items->Clear();
 
@@ -992,7 +995,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			if (maxMistake < modS)
 			{
 				maxMistake = modS;
-				mistakeIndex = i;
+				mistakeIndex = x0;
 			}
 
 
