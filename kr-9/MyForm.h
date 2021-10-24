@@ -141,6 +141,7 @@ namespace kr9 {
 
 
 	private: System::Windows::Forms::Panel^ panel1;
+private: System::Windows::Forms::ContextMenuStrip^ contextMenuStripAlpha;
 
 
 
@@ -197,12 +198,19 @@ namespace kr9 {
 
 
 
-	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
+
 	private: System::Windows::Forms::ToolStripMenuItem^ областьЗначенийToolStripMenuItem;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::TextBox^ textBoxU0;
 
 	private: System::Windows::Forms::Label^ label1;
+private: System::Windows::Forms::ToolStripMenuItem^ описаниеToolStripMenuItem;
+private: System::Windows::Forms::ContextMenuStrip^ contextMenuStripSigma;
+private: System::Windows::Forms::ToolStripMenuItem^ областьЗначенийToolStripMenuItem1;
+private: System::Windows::Forms::ToolStripMenuItem^ описаниеToolStripMenuItem1;
+private: System::Windows::Forms::ContextMenuStrip^ contextMenuStripU0;
+private: System::Windows::Forms::ToolStripMenuItem^ областьЗначенийToolStripMenuItem2;
+private: System::Windows::Forms::ToolStripMenuItem^ описаниеToolStripMenuItem2;
 
 
 
@@ -257,10 +265,14 @@ namespace kr9 {
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->contextMenuStripAlpha = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->областьЗначенийToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->описаниеToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->textBoxAlpha = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->contextMenuStripSigma = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->областьЗначенийToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->описаниеToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->textBoxSigma = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
@@ -299,12 +311,17 @@ namespace kr9 {
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->textBoxU0 = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->contextMenuStripU0 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->областьЗначенийToolStripMenuItem2 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->описаниеToolStripMenuItem2 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
-			this->contextMenuStrip1->SuspendLayout();
+			this->contextMenuStripAlpha->SuspendLayout();
+			this->contextMenuStripSigma->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			this->panel1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
+			this->contextMenuStripU0->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// chart1
@@ -333,7 +350,7 @@ namespace kr9 {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->ContextMenuStrip = this->contextMenuStrip1;
+			this->label2->ContextMenuStrip = this->contextMenuStripAlpha;
 			this->label2->Location = System::Drawing::Point(7, 24);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(57, 20);
@@ -341,12 +358,16 @@ namespace kr9 {
 			this->label2->Text = L"alpha=";
 			this->label2->Click += gcnew System::EventHandler(this, &MyForm::label2_Click);
 			// 
-			// contextMenuStrip1
+			// contextMenuStripAlpha
 			// 
-			this->contextMenuStrip1->ImageScalingSize = System::Drawing::Size(24, 24);
-			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->областьЗначенийToolStripMenuItem });
-			this->contextMenuStrip1->Name = L"contextMenuStrip1";
-			this->contextMenuStrip1->Size = System::Drawing::Size(232, 36);
+			this->contextMenuStripAlpha->ImageScalingSize = System::Drawing::Size(24, 24);
+			this->contextMenuStripAlpha->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->областьЗначенийToolStripMenuItem,
+					this->описаниеToolStripMenuItem
+			});
+			this->contextMenuStripAlpha->Name = L"contextMenuStrip1";
+			this->contextMenuStripAlpha->Size = System::Drawing::Size(232, 68);
+			this->contextMenuStripAlpha->Opening += gcnew System::ComponentModel::CancelEventHandler(this, &MyForm::contextMenuStrip1_Opening_1);
 			// 
 			// областьЗначенийToolStripMenuItem
 			// 
@@ -354,6 +375,13 @@ namespace kr9 {
 			this->областьЗначенийToolStripMenuItem->Size = System::Drawing::Size(231, 32);
 			this->областьЗначенийToolStripMenuItem->Text = L"Область значений";
 			this->областьЗначенийToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::областьЗначенийToolStripMenuItem_Click);
+			// 
+			// описаниеToolStripMenuItem
+			// 
+			this->описаниеToolStripMenuItem->Name = L"описаниеToolStripMenuItem";
+			this->описаниеToolStripMenuItem->Size = System::Drawing::Size(231, 32);
+			this->описаниеToolStripMenuItem->Text = L"Описание";
+			this->описаниеToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::описаниеToolStripMenuItem_Click);
 			// 
 			// textBoxAlpha
 			// 
@@ -366,12 +394,37 @@ namespace kr9 {
 			// label3
 			// 
 			this->label3->AutoSize = true;
+			this->label3->ContextMenuStrip = this->contextMenuStripSigma;
 			this->label3->Location = System::Drawing::Point(7, 55);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(60, 20);
 			this->label3->TabIndex = 7;
 			this->label3->Text = L"sigma=";
 			this->label3->Click += gcnew System::EventHandler(this, &MyForm::label3_Click);
+			// 
+			// contextMenuStripSigma
+			// 
+			this->contextMenuStripSigma->ImageScalingSize = System::Drawing::Size(24, 24);
+			this->contextMenuStripSigma->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->областьЗначенийToolStripMenuItem1,
+					this->описаниеToolStripMenuItem1
+			});
+			this->contextMenuStripSigma->Name = L"contextMenuStripSigma";
+			this->contextMenuStripSigma->Size = System::Drawing::Size(232, 68);
+			// 
+			// областьЗначенийToolStripMenuItem1
+			// 
+			this->областьЗначенийToolStripMenuItem1->Name = L"областьЗначенийToolStripMenuItem1";
+			this->областьЗначенийToolStripMenuItem1->Size = System::Drawing::Size(231, 32);
+			this->областьЗначенийToolStripMenuItem1->Text = L"Область значений";
+			this->областьЗначенийToolStripMenuItem1->Click += gcnew System::EventHandler(this, &MyForm::областьЗначенийToolStripMenuItem1_Click);
+			// 
+			// описаниеToolStripMenuItem1
+			// 
+			this->описаниеToolStripMenuItem1->Name = L"описаниеToolStripMenuItem1";
+			this->описаниеToolStripMenuItem1->Size = System::Drawing::Size(231, 32);
+			this->описаниеToolStripMenuItem1->Text = L"Описание";
+			this->описаниеToolStripMenuItem1->Click += gcnew System::EventHandler(this, &MyForm::описаниеToolStripMenuItem1_Click);
 			// 
 			// textBoxSigma
 			// 
@@ -710,11 +763,36 @@ namespace kr9 {
 			// label1
 			// 
 			this->label1->AutoSize = true;
+			this->label1->ContextMenuStrip = this->contextMenuStripU0;
 			this->label1->Location = System::Drawing::Point(7, 86);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(39, 20);
 			this->label1->TabIndex = 24;
 			this->label1->Text = L"U0=";
+			// 
+			// contextMenuStripU0
+			// 
+			this->contextMenuStripU0->ImageScalingSize = System::Drawing::Size(24, 24);
+			this->contextMenuStripU0->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->областьЗначенийToolStripMenuItem2,
+					this->описаниеToolStripMenuItem2
+			});
+			this->contextMenuStripU0->Name = L"contextMenuStripU0";
+			this->contextMenuStripU0->Size = System::Drawing::Size(232, 68);
+			// 
+			// областьЗначенийToolStripMenuItem2
+			// 
+			this->областьЗначенийToolStripMenuItem2->Name = L"областьЗначенийToolStripMenuItem2";
+			this->областьЗначенийToolStripMenuItem2->Size = System::Drawing::Size(231, 32);
+			this->областьЗначенийToolStripMenuItem2->Text = L"Область значений";
+			this->областьЗначенийToolStripMenuItem2->Click += gcnew System::EventHandler(this, &MyForm::областьЗначенийToolStripMenuItem2_Click);
+			// 
+			// описаниеToolStripMenuItem2
+			// 
+			this->описаниеToolStripMenuItem2->Name = L"описаниеToolStripMenuItem2";
+			this->описаниеToolStripMenuItem2->Size = System::Drawing::Size(231, 32);
+			this->описаниеToolStripMenuItem2->Text = L"Описание";
+			this->описаниеToolStripMenuItem2->Click += gcnew System::EventHandler(this, &MyForm::описаниеToolStripMenuItem2_Click);
 			// 
 			// button2
 			// 
@@ -750,12 +828,14 @@ namespace kr9 {
 			this->Text = L"Иванов Георгий 1 команда, задача №9";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
-			this->contextMenuStrip1->ResumeLayout(false);
+			this->contextMenuStripAlpha->ResumeLayout(false);
+			this->contextMenuStripSigma->ResumeLayout(false);
 			this->groupBox1->ResumeLayout(false);
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
+			this->contextMenuStripU0->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -1009,10 +1089,27 @@ private: System::Void toolStripMenuItem1_Click(System::Object^ sender, System::E
 	MessageBox::Show("Значения больше 0");
 }
 private: System::Void областьЗначенийToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	MessageBox::Show("sda");
+	MessageBox::Show("Область допустимых значений: от 0, до 3.14");
 }
 private: System::Void button2_Click_2(System::Object^ sender, System::EventArgs^ e) {
 	this->chart1->Series->Clear();
+}
+private: System::Void contextMenuStrip1_Opening_1(System::Object^ sender, System::ComponentModel::CancelEventArgs^ e) {
+}
+private: System::Void описаниеToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("Alpha определяет угол между стенкой сосуда и нормалью поверхности, сквозь которое вытекает жидкость");
+}
+private: System::Void областьЗначенийToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("Область допустимых значений: не отрицательное число");
+}
+private: System::Void описаниеToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("Sigma определяет площадь поверхности, через которую вытекает жидкость");
+}
+private: System::Void областьЗначенийToolStripMenuItem2_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("Область допустимых значений: не отрицательное число");
+}
+private: System::Void описаниеToolStripMenuItem2_Click(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("U0 определяет начальный уровень воды в сосуде");
 }
 };
 }
