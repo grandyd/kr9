@@ -211,6 +211,9 @@ private: System::Windows::Forms::ToolStripMenuItem^ описаниеToolStripMenuItem1;
 private: System::Windows::Forms::ContextMenuStrip^ contextMenuStripU0;
 private: System::Windows::Forms::ToolStripMenuItem^ областьЗначенийToolStripMenuItem2;
 private: System::Windows::Forms::ToolStripMenuItem^ описаниеToolStripMenuItem2;
+private: System::Windows::Forms::GroupBox^ groupBox3;
+private: System::Windows::Forms::TextBox^ textBoxX0;
+private: System::Windows::Forms::Label^ label8;
 
 
 
@@ -260,8 +263,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ описаниеToolStripMenuItem2;
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea4 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -315,6 +318,9 @@ private: System::Windows::Forms::ToolStripMenuItem^ описаниеToolStripMenuItem2;
 			this->областьЗначенийToolStripMenuItem2 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->описаниеToolStripMenuItem2 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->textBoxX0 = (gcnew System::Windows::Forms::TextBox());
+			this->label8 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->contextMenuStripAlpha->SuspendLayout();
 			this->contextMenuStripSigma->SuspendLayout();
@@ -322,14 +328,15 @@ private: System::Windows::Forms::ToolStripMenuItem^ описаниеToolStripMenuItem2;
 			this->panel1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->contextMenuStripU0->SuspendLayout();
+			this->groupBox3->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// chart1
 			// 
-			chartArea4->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea4);
-			legend4->Name = L"Legend1";
-			this->chart1->Legends->Add(legend4);
+			chartArea1->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->chart1->Legends->Add(legend1);
 			this->chart1->Location = System::Drawing::Point(891, 488);
 			this->chart1->Name = L"chart1";
 			this->chart1->Size = System::Drawing::Size(642, 446);
@@ -608,6 +615,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ описаниеToolStripMenuItem2;
 			this->labelMistakeIndex1->Size = System::Drawing::Size(18, 20);
 			this->labelMistakeIndex1->TabIndex = 15;
 			this->labelMistakeIndex1->Text = L"0";
+			this->labelMistakeIndex1->Click += gcnew System::EventHandler(this, &MyForm::labelMistakeIndex1_Click);
 			// 
 			// label16
 			// 
@@ -740,24 +748,22 @@ private: System::Windows::Forms::ToolStripMenuItem^ описаниеToolStripMenuItem2;
 			// 
 			// groupBox2
 			// 
-			this->groupBox2->Controls->Add(this->textBoxU0);
-			this->groupBox2->Controls->Add(this->label1);
 			this->groupBox2->Controls->Add(this->textBoxSigma);
 			this->groupBox2->Controls->Add(this->textBoxAlpha);
 			this->groupBox2->Controls->Add(this->label2);
 			this->groupBox2->Controls->Add(this->label3);
-			this->groupBox2->Location = System::Drawing::Point(56, 203);
+			this->groupBox2->Location = System::Drawing::Point(56, 190);
 			this->groupBox2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Padding = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->groupBox2->Size = System::Drawing::Size(258, 154);
+			this->groupBox2->Size = System::Drawing::Size(270, 103);
 			this->groupBox2->TabIndex = 22;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Параметры системы";
 			// 
 			// textBoxU0
 			// 
-			this->textBoxU0->Location = System::Drawing::Point(70, 88);
+			this->textBoxU0->Location = System::Drawing::Point(58, 26);
 			this->textBoxU0->Name = L"textBoxU0";
 			this->textBoxU0->Size = System::Drawing::Size(148, 26);
 			this->textBoxU0->TabIndex = 24;
@@ -767,7 +773,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ описаниеToolStripMenuItem2;
 			// 
 			this->label1->AutoSize = true;
 			this->label1->ContextMenuStrip = this->contextMenuStripU0;
-			this->label1->Location = System::Drawing::Point(7, 86);
+			this->label1->Location = System::Drawing::Point(13, 29);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(39, 20);
 			this->label1->TabIndex = 24;
@@ -807,11 +813,43 @@ private: System::Windows::Forms::ToolStripMenuItem^ описаниеToolStripMenuItem2;
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click_2);
 			// 
+			// groupBox3
+			// 
+			this->groupBox3->Controls->Add(this->textBoxX0);
+			this->groupBox3->Controls->Add(this->label8);
+			this->groupBox3->Controls->Add(this->textBoxU0);
+			this->groupBox3->Controls->Add(this->label1);
+			this->groupBox3->Location = System::Drawing::Point(56, 301);
+			this->groupBox3->Name = L"groupBox3";
+			this->groupBox3->Size = System::Drawing::Size(270, 103);
+			this->groupBox3->TabIndex = 24;
+			this->groupBox3->TabStop = false;
+			this->groupBox3->Text = L"Задача Коши";
+			// 
+			// textBoxX0
+			// 
+			this->textBoxX0->Location = System::Drawing::Point(58, 58);
+			this->textBoxX0->Name = L"textBoxX0";
+			this->textBoxX0->Size = System::Drawing::Size(148, 26);
+			this->textBoxX0->TabIndex = 25;
+			this->textBoxX0->Text = L"0";
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->ContextMenuStrip = this->contextMenuStripU0;
+			this->label8->Location = System::Drawing::Point(13, 61);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(38, 20);
+			this->label8->TabIndex = 26;
+			this->label8->Text = L"X0=";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1664, 1025);
+			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
@@ -839,6 +877,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ описаниеToolStripMenuItem2;
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			this->contextMenuStripU0->ResumeLayout(false);
+			this->groupBox3->ResumeLayout(false);
+			this->groupBox3->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -886,7 +926,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	
 
 
-	double x0 = 0;
+	double x0 = System::Convert::ToDouble(textBoxX0->Text);
 	
 	double alpha = System::Convert::ToDouble(textBoxAlpha->Text);
 	double sigma = System::Convert::ToDouble(textBoxSigma->Text);
@@ -928,7 +968,6 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		
 		h = System::Convert::ToDouble(textBox2->Text);
 		en = 0;
-		x0 = 0;
 		double v0 = u0;
 		double vkr = v0;
 
@@ -1113,6 +1152,8 @@ private: System::Void областьЗначенийToolStripMenuItem2_Click(System::Object^ se
 }
 private: System::Void описаниеToolStripMenuItem2_Click(System::Object^ sender, System::EventArgs^ e) {
 	MessageBox::Show("U0 определяет начальный уровень воды в сосуде");
+}
+private: System::Void labelMistakeIndex1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
