@@ -942,16 +942,16 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	//Проверка наличия графика U0
 	double u0 = System::Convert::ToDouble(textBoxU0->Text);
 	
-	for (auto i = VecU0->begin(); i!= VecU0->end(); i++)
-	{
-		if (*i==u0)
-		{
-			MessageBox::Show("График для U0=" + u0.ToString() + " уже создан");
-			return;
-		}
-	}
+	//for (auto i = VecU0->begin(); i!= VecU0->end(); i++)
+	//{
+	//	if (*i==u0)
+	//	{
+	//		MessageBox::Show("График для U0=" + u0.ToString() + " уже создан");
+	//		return;
+	//	}
+	//}
 
-	VecU0->push_back(u0);
+	//VecU0->push_back(u0);
 	//===========================
 
 	ChartSeriesCounter++;
@@ -1073,7 +1073,24 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 			
 
-
+			while (v0<0)
+			{
+				h /= 2;
+				if (minH > h)
+				{
+					minH = h;
+				}
+				counterL++;
+				//расчёт новой точки
+				vkr = vkrNext(prevX, prevV, h, alpha, sigma);
+				x0 = xNext(prevX, h);
+				v0 = vNext(prevX, prevV, h, alpha, sigma);
+				en = pow(2, 3) * (vkr - prevV) / (pow(2, 3) - 1) * pow(2, 3);
+				if (v0 > System::Convert::ToDouble(textBox3->Text))
+				{
+					break;
+				}
+			}
 
 			chart1->Series[SeriesName]->Points->AddXY(x0, v0);//отрисовка точки
 
