@@ -1,7 +1,7 @@
 #include <cmath>
+#include <vector>
 //double sigma = 10;
 //double alpha = 3.14 / 3;
-
 inline double formula(double x, double v, double alpha, double sigma)
 {
 	return -0.6 * sigma * sqrt(2 * 9.81) * 1 / (tan(alpha / 2) * tan(alpha / 2)) * 1 / 3.14 * pow(v, -3 / 2);
